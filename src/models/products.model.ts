@@ -16,6 +16,12 @@ class ProductsModel {
       amount]);
     return result[0];
   }
+
+  public async read() {
+    const query = 'SELECT * FROM Trybesmith.Products';
+    const result = await this.connection.execute<ResultSetHeader>(query);
+    return result[0];
+  }
 }
 
 export default ProductsModel;

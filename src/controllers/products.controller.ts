@@ -14,6 +14,11 @@ class ProductsController {
     const result = await this.productsService.create(req.body);
     return res.status(201).json({ id: result.insertId, name, amount });
   };
+
+  read = async (_req: Request, res: Response) => {
+    const result = await this.productsService.read();
+    return res.status(200).json(result);
+  };
 }
 
 export default ProductsController;
