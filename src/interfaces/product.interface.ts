@@ -1,5 +1,5 @@
 interface IProduct {
-  iddwa: number;
+  id: number;
   name: string;
   amount: string;
 }
