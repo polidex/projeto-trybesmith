@@ -9,15 +9,15 @@ class ProductsService {
     this.productsModel = new ProductsModel(connection);
   }
 
-  public async create(product: IProduct) {
+  create = async (product: IProduct) => {
     const result = await this.productsModel.create(product);
     return result;
-  }
+  };
 
-  public async read() {
+  read = async () => {
     const result = await this.productsModel.read();
     return result;
-  }
+  };
 }
 
 export default ProductsService;
