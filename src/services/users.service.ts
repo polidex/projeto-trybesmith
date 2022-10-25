@@ -13,11 +13,6 @@ class UsersService {
     const result = await this.usersModel.create(user);
     return result;
   };
-
-  // read = async () => {
-  //   const result = await this.productsModel.read();
-  //   return result;
-  // };
 }
 
 export default UsersService;

@@ -16,11 +16,6 @@ class UsersController {
     const registerToken = tokenize({ id: result.id, username: result.username });
     return res.status(201).json({ token: registerToken });
   };
-
-  // read = async (_req: Request, res: Response) => {
-  //   const result = await this.productsService.read();
-  //   return res.status(200).json(result);
-  // };
 }
 
 export default UsersController;

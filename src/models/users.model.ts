@@ -17,12 +17,6 @@ class UsersModel {
     const newUser = { id: result[0].insertId, ...user };
     return newUser;
   };
-
-  // read = async () => {
-  //   const query = 'SELECT * FROM Trybesmith.Products';
-  //   const result = await this.connection.execute<ResultSetHeader>(query);
-  //   return result[0];
-  // };
 }
 
 export default UsersModel;
