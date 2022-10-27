@@ -1,4 +1,4 @@
-import IOrder from '../interfaces/order.interface';
+// import IOrder from '../interfaces/order.interface';
 import connection from '../models/connection';
 import OrdersModel from '../models/orders.model';
 
