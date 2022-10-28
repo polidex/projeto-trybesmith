@@ -24,10 +24,9 @@ class OrdersModel {
     const [{ insertId }] = await this.connection
       .execute<ResultSetHeader>(query, [userId]);
       
-    order.productsIds.forEach(async (id: number) => {
-      const [result] = await this.connection.execute(query2, [insertId, id]);
-      return result;
-    });
+    const result = order.productsIds
+      .map((id: number) => this.connection.execute(query2, [insertId, id]));
+    await Promise.all(result);
   };
 }
 
