@@ -14,7 +14,7 @@ class LoginController {
 
     const result = await this.loginService.userLogin(login);
     
-    if (result === undefined) {
+    if (result === false) {
       return res.status(401).json({ message: 'Username or password invalid' });
     }
     const logintoken = tokenize(result);

@@ -14,6 +14,7 @@ class LoginModel {
     const query = 'SELECT * FROM Trybesmith.Users WHERE username = ? AND password = ?';
     const [[result]] = await this.connection.execute<RowDataPacket[]>(query, [username,
       password]);
+    if (result === undefined) return false;
     const newLogin = { id: result.id, username: result.username };
     
     return newLogin;
