@@ -13,10 +13,11 @@ class LoginController {
     const login = req.body;
 
     const result = await this.loginService.userLogin(login);
+    
     if (result === undefined) {
       return res.status(401).json({ message: 'Username or password invalid' });
     }
-    const logintoken = tokenize(login);
+    const logintoken = tokenize(result);
     return res.status(200).json({ token: logintoken });
   };
 }

@@ -7,8 +7,7 @@ const tokenValidation = (req: Request, res: Response, next: NextFunction) => {
   if (!authorization) return res.status(401).json({ message: 'Token not found' });
 
   try {
-    /* const result =  */untokenize(authorization);
-    // req.user = result.dataValues;
+    untokenize(authorization);
   } catch (err) {
     return res.status(401).json({ message: 'Invalid token' });
   }

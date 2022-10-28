@@ -1,5 +1,5 @@
 import { Pool, ResultSetHeader } from 'mysql2/promise';
-// import IOrder from '../interfaces/order.interface';
+import IOrder from '../interfaces/order.interface';
 
 class OrdersModel {
   public connection: Pool;
@@ -17,18 +17,17 @@ class OrdersModel {
     return result[0];
   };
 
-  create = async (/* { userId, productsIds }: IOrder */) => {
-    // const query = 'INSERT INTO Trybesmith.Orders userId VALUES ?';
-    // const query2 = 'UPDATE Trybesmith.Products SET orderId = ? WHERE id = ?';
+  create = async (order: IOrder, userId: number) => {
+    const query = 'INSERT INTO Trybesmith.Orders (userId) VALUES (?)';
+    const query2 = 'UPDATE Trybesmith.Products SET orderId = ? WHERE id = ?';
     
-    // const [{ insertId }] = await this.connection
-    //   .execute<ResultSetHeader>(query, [userId]);
-    // console.log('------------------------->', insertId);
-
-    // productsIds.forEach(async (id: number) => {
-    //   const [result] = await this.connection.execute(query2, [insertId, id]);
-    //   return result;
-    // });
+    const [{ insertId }] = await this.connection
+      .execute<ResultSetHeader>(query, [userId]);
+      
+    order.productsIds.forEach(async (id: number) => {
+      const [result] = await this.connection.execute(query2, [insertId, id]);
+      return result;
+    });
   };
 }
 

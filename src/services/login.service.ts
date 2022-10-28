@@ -11,7 +11,6 @@ class LoginService {
 
   userLogin = async (login: ILogin) => {
     const result = await this.loginModel.userLogin(login);
-    console.log('-------------------------------->', result);
     return result;
   };
 }

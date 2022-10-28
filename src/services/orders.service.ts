@@ -1,4 +1,4 @@
-// import IOrder from '../interfaces/order.interface';
+import IOrder from '../interfaces/order.interface';
 import connection from '../models/connection';
 import OrdersModel from '../models/orders.model';
 
@@ -14,9 +14,9 @@ class OrdersService {
     return result;
   };
 
-  create = async (/* order: IOrder */) => {
-    // const result = await this.ordersModel.create(order);
-    // return result;
+  create = async (order: IOrder, userId: number) => {
+    const result = await this.ordersModel.create(order, userId);
+    return result;
   };
 }
 

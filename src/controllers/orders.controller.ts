@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import OrdersService from '../services/orders.service';
+import { untokenize } from '../utilities/tokenize';
 
 class OrdersController {
   ordersService: OrdersService;
@@ -14,12 +15,12 @@ class OrdersController {
   };
 
   create = async (req: Request, res: Response) => {
-    const result = 'post no /orders';
-    // const order = req.body;
-    // const { userId } = req.headers;
+    const order = req.body;
+    const token = req.headers.authorization as string;
+    const user = untokenize(token);
 
-    // await this.ordersService.create({ ...order, userId });
-    return res.status(201).json(/* { userId, ...order } */result);
+    await this.ordersService.create(order, user.id);
+    return res.status(201).json({ userId: user.id, productsIds: order.productsIds });
   };
 }
 
